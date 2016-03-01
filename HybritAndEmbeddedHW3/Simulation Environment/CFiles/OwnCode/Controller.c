@@ -1,27 +1,24 @@
 // Initialization
 uw = 0;
 up = 0;
-
+tg = atan2((yg - y0),(xg - x0));
+tg = tg * 180 / PI; // Convert from radians to degrees
 
 /// TASKS 7->11
 
 // uw controller
 kw = 13; // Up to 20
-temp1 = cos(theta) * (xg - x);
-temp2 = sin(theta) * (yg - y);
+temp1 = cos(theta) * (x0 - x);
+temp2 = sin(theta) * (y0 - y);
 uw = kw * (temp1 + temp2);
 
-tg = atan2((yg - y),(xg - x));
-tg = tg * 180 / PI; // Convert from radians to degrees
-
+// up controller
 kp = 5; //Up to 10
 up = kp*(tg - theta);
 
 
 /// TASKS 12 -> 17
 // uw controller
-tg = atan2((yg - y0),(xg - x0));
-tg = tg * 180 / PI; // Convert from radians to degrees
 kw = 13; // Up to 20
 temp1 = cos(tg) * (xg - x);
 temp2 = sin(tg) * (yg - y);
