@@ -3,6 +3,8 @@ double up;
 double kp;
 double kw; 
 double tg;
+double tgrad;
+double thetarad;
 double temp1;
 double temp2;
 double p;
