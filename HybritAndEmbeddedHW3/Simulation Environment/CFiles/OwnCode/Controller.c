@@ -1,7 +1,19 @@
 // Initialization
+uw = 0;
+up = 0;
 thetarad = theta * PI / 180;
 tgrad = atan2((yg - y0),(xg - x0));
 tg = tgrad * 180 / PI; // Convert from radians to degrees
+
+// If we move from/to -179 to/from 180
+if (abs(tg - theta) > (past + 90)) {
+	if (tg > 0) {
+		tg = tg - 360;
+	} else {
+		tg = tg + 360;
+	}
+}
+past = (abs(tg - theta));
 
 // Changing controller
 if (abs(tg - theta) < 1) { //One degree 

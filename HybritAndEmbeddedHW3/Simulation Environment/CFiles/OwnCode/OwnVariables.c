@@ -1,6 +1,6 @@
 // Translation velocity uw and rotation velocity up
-double uw = 0;
-double up = 0;
+double uw;
+double up;
 
 // Proporcional constant for controllers
 double kp;
@@ -18,3 +18,4 @@ double temp2;
 // Design variables
 double p;
 int controller = 0; // Hybrid controller
+int past = 360;
