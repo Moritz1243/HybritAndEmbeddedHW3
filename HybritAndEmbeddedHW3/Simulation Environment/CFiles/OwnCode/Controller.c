@@ -16,7 +16,7 @@ if (abs(tg - theta) > (past + 90)) {
 past = (abs(tg - theta));
 
 // Changing controller
-if (abs(tg - theta) < 1) { //One degree 
+if (abs(tg - theta) < 6) { //Six degrees
 	controller = 1;
 }
 
@@ -44,8 +44,8 @@ if (controller == 0) {
 	uw = kw * (temp1 + temp2);
 
 	// up controller
-	p = 1;
-	kp = 4; //Up to 10 if p=1
+	p = 50;
+	kp = 0.10 * 180 / PI;
 	temp1 = sin(tgrad) * (x + p*cos(thetarad) - x0);
 	temp2 = cos(tgrad) * (y + p*sin(thetarad) - y0);
 	up = kp * (temp1 - temp2);
@@ -55,5 +55,8 @@ if (controller == 0) {
 //Serial.print(controller, DEC);
 
 // Update ur, ul
+if (uw > 500) uw = 500;
+if (uw < -500) uw = -500;
+
 right = uw + up/2;
 left = uw - up/2;
